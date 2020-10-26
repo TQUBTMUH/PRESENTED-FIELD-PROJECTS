@@ -1,0 +1,632 @@
+/* ------------------------------------------ */
+/* BASIC SETUP */
+/* ------------------------------------------ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #ffffff;
+  color: #555555;
+  font-family: "Lato", "Arial", sans-serif;
+  font-weight: 300;                     /* as from what we used from google fonts */
+  font-size: 20px;
+  text-rendering: optimizeLegibility;   /* makes font rendering in perfect way*/
+}
+
+/* --------------------------------- */
+/* REUSABLE COMPONENTS */
+/* --------------------------------- */
+
+.row {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 80px 0; /* i cud use mgin bt i chose padding for a reason */
+}
+
+.box {
+  padding: 1%;
+}
+/* ------- HEADING -------- */
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px; /* relative with html font-size */
+}
+
+h1 {
+  margin-top: 0; /* cause of normalize.css */
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 240%;
+  word-spacing: 4px;
+}
+
+h2 {
+  font-size: 180%;
+  word-spacing: 2px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 110%;
+  margin-bottom: 15px;
+}
+
+h2:after {
+  display: block;
+  height: 2px;
+  background-color: #e67e22;
+  content: " "; /* since there is no content */
+  width: 100px;
+  margin: 0 auto; /* to center the line */
+  margin-top: 30px;
+}
+
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: ".";
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+/* -------- PARAGRAPHS -------- */
+.long-copy {
+  line-height: 145%;
+  width: 70%;
+  margin-left: 15%; /* 30% remains on the right, this is done to center the content */
+}
+
+.box p {
+  font-size: 90%;
+  line-height: 145%;
+}
+
+/* -------- ICONS -------- */
+.icon-big {
+  font-size: 350%;
+  display: block;
+  color: #e67e22;
+  margin-bottom: 10px;
+}
+
+.icon-small {
+  display: inline-block;
+  width: 30px; /* width of inline block co lazima though*/
+  text-align: center;
+  color: #e67e22;
+  font-size: 120%; /* from icon font */
+  margin-right: 10px;
+
+  /* secreat to align text and icons (all 3 or 2 of them) */
+  line-height: 120%;
+  vertical-align: middle; /* though even if i remove them no much effect */
+  margin-top: -5px;
+}
+
+/* ------- LINKS -------- */
+a:link,
+a:visited {
+  color: #e67e22;
+  text-decoration: none;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #e67e22;
+  transition: border-bottom 0.2s, color 0.2s;
+}
+
+a:hover,
+a:active {
+  color: #555555;
+  border-bottom: 1px solid transparent; /* line dissapear */
+}
+
+/* ------- BUTTONS -------- */
+.btn:link,
+.btn:visited,
+input[type="submit"] {
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: 300;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 200px;
+  transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type="submit"] {
+  background-color: #e67e22;
+  border: 1px solid #e67e22;
+  color: #ffffff;
+  margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+  border: 1px solid #e67e22;
+  color: #e67e22;
+}
+
+.btn:hover,
+.btn:active,
+input[type="submit"]:hover,
+input[type="submit"]:active {
+  background-color: #cf6d17;
+}
+
+.btn-full:hover,
+.btn-full:active {
+  border: 1px solid #cf6d17;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+  border: 1px solid #cf6d17;
+  color: #ffffff;
+}
+
+/* ------------------------------ */
+/* HEADER */
+/* ------------------------------ */
+
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(img/hero.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100vh; /* 100% height of the viewport */
+}
+
+.hero-text-box {
+  position: absolute;
+  width: 1140px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centers the hero */
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  float: left;
+  margin-top: 20px;
+}
+
+.logo-black {
+  display: none;
+  height: 50px;
+  width: auto;
+  float: left;
+  margin: 5px 0;
+}
+
+/* ---- main nav ---- */
+
+.main-nav {
+  float: right;
+  list-style: none;
+  margin-top: 55px;
+}
+
+.main-nav li {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+  padding: 8px 0;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 90%;
+  border-bottom: 2px solid transparent; /* makes border invisible until hovered */
+  transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+  border-bottom: 2px solid #e67e22;
+}
+
+/* ---- Mobile nav ---- */
+.mobile-nav-icon {
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+.mobile-nav-icon i {
+    font-size: 200%;
+    color: #fff;                        /* -- b4 sticky state -- */
+}
+
+/* ---- sticky nav ---- */
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 2px #efefef;
+  z-index: 9999;
+}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+  padding: 16px 0;
+  color: #555555;
+}
+
+.sticky .main-nav {
+  margin-top: 18px;
+}
+
+.sticky .logo {
+  display: none;
+}
+.sticky .logo-black {
+  display: block;
+}
+
+/* --------------------------------- */
+/* FEATURES */
+/* --------------------------------- */
+
+.section-features .long-copy {
+  margin-bottom: 30px;
+}
+
+/* -------------------------------- */
+/* MEALS */
+/* -------------------------------- */
+
+.section-meals {
+  padding: 0; /* cz section above was set to 80px so tumepunguza */
+}
+
+.meals-showcase {
+  list-style: none;
+  width: 100%; /* entire browser width NOT 1140px */
+}
+
+.meals-showcase li {
+  display: block;
+  float: left;
+  width: 25%; /* total 100% for 4 images */
+}
+
+.meal-photo {
+  width: 100%; /* the exact width as it's parent li (25%) */
+  margin: 0; /* cause of normalize.css */
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.meal-photo img {
+  opacity: 0.7; /* results white opacity cz bg-color is #fff */
+  width: 100%; /* show all image width even though space is small */
+  height: auto;
+  transform: scale(1.15); /* increase image size by 15% and cz overflow*/
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.meal-photo img:hover {
+  transform: scale(
+    1.03
+  ); /* 1.03 cz 1 shows a whitespace at the bottom of img on hovering */
+  opacity: 1;
+}
+
+/* --------------------------------- */
+/* HOW IT WORKS */
+/* --------------------------------- */
+
+.section-steps {
+  background-color: #f4f4f4;
+}
+
+.steps-box:first-child {
+  text-align: right; /* text-align works with all inline element that includs img */
+  padding-right: 3%; /* for responsiveness it's in % */
+  margin-top: 30px;
+}
+
+.steps-box:last-child {
+  padding-left: 3%;
+  margin-top: 70px;
+}
+
+.app-screen {
+  width: 40%;
+}
+
+.works-step {
+  margin-bottom: 50px;
+}
+
+.works-step:last-of-type {
+  margin-bottom: 80px; /* like last child and also this override the 30px bttm */
+}
+
+.works-step div {
+  color: #e67e22;
+  border: 2px solid #e67e22;
+  display: block;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+  float: left;
+  font-size: 150%;
+  margin-right: 25px;
+}
+
+.btn-app:link,
+.btn-link:visited {
+  border: 0; /* orange underline for this links to dissapear */
+}
+
+.btn-app img {
+  height: 50px;
+  width: auto;
+  margin-right: 10px;
+}
+
+/* ---------------------------------- */
+/* CITIES */
+/* ---------------------------------- */
+
+.box img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.city-feature {
+  margin-bottom: 5px;
+}
+
+/* ---------------------------------- */
+/* TESTIMONIALS */
+/* ---------------------------------- */
+
+.section-testimonials {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(img/back-customers.jpg);
+  background-size: cover;
+  color: #ffffff;
+  background-attachment: fixed;
+}
+
+blockquote {
+  padding: 2%;
+  font-style: italic;
+  line-height: 145%;
+  position: relative;
+  margin-top: 40px;
+}
+
+blockquote:before {
+  content: "\201C";
+  font-size: 500%;
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+}
+
+cite {
+  font-size: 90%;
+  margin-top: 25px;
+  display: block; /* remember block acts like a <br> */
+}
+
+cite img {
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle; /* align-center the name with image */
+}
+
+/* ---------------------------------- */
+/* SIGN UP */
+/* ---------------------------------- */
+
+.section-plans {
+  background-color: #f4f4f4;
+}
+
+.plan-box {
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: 90%; /* not wanting it to !00% of parent width */
+  margin-left: 5%; /* technique as before to center the box inside the parent */
+  box-shadow: 0 2px 2px #d8d8d8;
+}
+
+.plan-box div {
+  padding: 15px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.plan-box ul {
+  list-style: none;
+}
+
+.plan-box ul li {
+  padding: 5px 0;
+}
+
+.plan-box div:last-child {
+  text-align: center;
+  border: none; /* border bottom was specified for all div in plan box */
+}
+
+.plan-box div:first-child {
+  background-color: #fcfcfc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; /* thy disappeared on addition of bg-color */
+}
+
+.plan-price {
+  font-size: 300%;
+  margin-bottom: 10px;
+  font-weight: 100; /* it's available on the font we chose--> check the link href */
+  color: #e67e22;
+}
+
+.plan-price span {
+  font-size: 30%; /* of parent 300% */
+  font-weight: 300; /* specify it, otherwise it will inherit from parent */
+}
+
+.plan-price-meal {
+  font-size: 80%; /* reduce the font cz of wanting it to fit in 1 line */
+}
+
+/* ---------------------------------- */
+/* CONTACT FORM */
+/* ---------------------------------- */
+
+.contact-form {
+  width: 60%;
+  margin: 0 auto;
+}
+
+input[type=text],
+input[type=email],                              /* applies changes to first to inputs */ 
+select,
+textarea {
+  width: 100%;
+  padding: 7px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+}
+
+input[type="checkbox"] {
+  margin: 10px 5px 10px 0;
+}
+
+*:focus {
+  outline: none; /* gets rid of blue border that appear on focusing input fields */
+}
+
+/* ---------------------------------- */
+/* FOOTER */
+/* ---------------------------------- */
+
+footer {
+  background-color: #333;
+  padding: 40px;
+  font-size: 80%;
+}
+
+.footer-nav {
+  list-style: none;
+  float: left;
+}
+
+.social-links {
+  list-style: none;
+  float: right;
+}
+
+.footer-nav li,
+.social-links li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+  text-decoration: none;
+  border: 0;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+  color: #ddd;
+}
+
+.social-links li a:link,
+.social-links li a:active {
+  font-size: 160%;
+}
+
+.ion-social-facebook:hover,
+.ion-social-twitter:hover,
+.ion-social-googleplus:hover,
+.ion-social-instagram:hover {
+  transition: color 0.2s;
+}
+
+.ion-social-facebook:hover {
+  color: #3b5998;
+}
+
+.ion-social-twitter:hover {
+  color: #00aced;
+}
+
+.ion-social-googleplus:hover {
+  color: #dd4b39;
+}
+
+.ion-social-instagram:hover {
+  color: #517fa4;
+}
+
+footer p {
+  color: #888;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+/* ---------------------------------- */
+/* ANIMATIONS */
+/* ---------------------------------- */
+
+.js-wp-1,
+.js-wp-2,
+.js-wp-3 {
+    /* display: none;                           this won't work */
+    opacity: 0;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;                     /* cz it was a bit slow */
+}
+
+.js-wp-4 {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.js-wp-1 .animated,
+.js-wp-2 .animated,
+.js-wp-3 .animated {
+    opacity: 1;
+}
